@@ -6,7 +6,7 @@ import Card from '@material-ui/core/Card'
 import { CardContent, Grid, CardHeader, CardActions, Button, Typography, IconButton } from '@material-ui/core';
 import { ChevronLeft, ChevronRight } from '@material-ui/icons'
 
-class BlogRoll extends React.Component {
+class MemberRoll extends React.Component {
   render() {
     const { posts, numPages, currentPage } = this.props
     var maxPages = 4
@@ -34,35 +34,28 @@ class BlogRoll extends React.Component {
     }
 
     return (
-      <div className='blog-roll'>
+      <div className='member-roll'>
         <Grid container spacing={2}>
           {posts &&
             posts.map(({ node: post }, index) => (
-            <React.Fragment key={index}>
-              <Grid item xs={4}>
-                <div className='thumbnail'>
-                  {post.frontmatter.featuredimage ? (
-                    <Link to={post.fields.slug}>
-                      <PreviewCompatibleImage
-                        imageInfo={{
-                          image: post.frontmatter.featuredimage,
-                          alt: `featured image thumbnail for post ${
-                            post.title
-                          }`,
-                        }}
-                      />
-                    </Link>
-                  ) : null}
-                </div>
-              </Grid>
-              <Grid item xs={8}>
-                <div>
-                <Typography variant='h6'>{post.frontmatter.title}</Typography>
-                {post.excerpt}
-                </div>
-                <Button component={Link} to={post.fields.slug}>{'More'}</Button>
-              </Grid>
-            </React.Fragment>
+            <Grid item md={2} sm={3} xs={6} key={index}>
+              {post.frontmatter.featuredimage ? (
+                <Link
+                  to={post.fields.slug}
+                  className='avatar'
+                >
+                  <PreviewCompatibleImage
+                    imageInfo={{
+                      image: post.frontmatter.featuredimage,
+                      alt: `featured image thumbnail for post ${
+                        post.title
+                      }`,
+                    }}
+                  />
+                </Link>
+              ) : null}
+              <Typography className='name' align='center'>{post.frontmatter.name}</Typography>
+            </Grid>
           ))}
         </Grid>
         {numPages && currentPage && (
@@ -96,7 +89,7 @@ class BlogRoll extends React.Component {
               <Button
                 className="page-number-button"
                 component={Link}
-                to={`/blog/${n}`}
+                to={`/member/${n}`}
                 key={n}
               >
                 {n}
@@ -104,7 +97,7 @@ class BlogRoll extends React.Component {
             )}
             <IconButton
               component={Link}
-              to={`/blog/${currentPage + 1}`}
+              to={`/member/${currentPage + 1}`}
               disabled={currentPage === numPages}
             >
               <ChevronRight/>
@@ -116,8 +109,8 @@ class BlogRoll extends React.Component {
   }
 }
 
-BlogRoll.propTypes = {
+MemberRoll.propTypes = {
   posts: PropTypes.array,
 }
 
-export default BlogRoll
+export default MemberRoll

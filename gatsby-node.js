@@ -31,6 +31,36 @@ exports.createPages = ({ actions, graphql }) => {
 
     const posts = result.data.allMarkdownRemark.edges
 
+    const postsPerPage = 10
+    const numPages = Math.ceil(posts.filter(p => p.node.frontmatter.templateKey === 'blog-post').length / postsPerPage)
+    Array.from({ length: numPages }).forEach((_, i) => {
+      createPage({
+        path: i === 0 ? `/blog` : `/blog/${i + 1}`,
+        component: path.resolve("./src/templates/blog-list-page.js"),
+        context: {
+          limit: postsPerPage,
+          skip: i * postsPerPage,
+          numPages,
+          currentPage: i + 1,
+        },
+      })
+    })
+
+    const membersPerPage = 20
+    const numMembers = Math.ceil(posts.filter(p => p.node.frontmatter.templateKey === 'member-page').length / postsPerPage)
+    Array.from({ length: numMembers }).forEach((_, i) => {
+      createPage({
+        path: i === 0 ? `/member` : `/member/${i + 1}`,
+        component: path.resolve("./src/templates/member-list-page.js"),
+        context: {
+          limit: membersPerPage,
+          skip: i * membersPerPage,
+          numPages: numMembers,
+          currentPage: i + 1,
+        },
+      })
+    })
+
     posts.forEach(edge => {
       const id = edge.node.id
       createPage({

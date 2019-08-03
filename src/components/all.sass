@@ -1,140 +1,212 @@
-@import "~bulma/sass/utilities/initial-variables"
 
-// Config vars
-// Kaldi logo brand color: #FD461E
-$kaldi-red: #D64000
-$kaldi-red-invert: #fff
 
-$primary: $kaldi-red
-$primary-invert: $kaldi-red-invert
-$body-color: #333
-$black: #2b2523
+html body
+  padding: 0
+  margin: 0
 
-.navbar .navbar-menu
-  box-shadow:none !important
+a
+  padding: 0
+  margin: 0
+  color: black
+  text-decoration: none
 
-.content .taglist
-  list-style: none
-  margin-bottom: 0
-  margin-left: 0
-  margin-right: 1.5rem
-  margin-top: 1.5rem
-  display: flex
-  flex-wrap: wrap
-  justify-content: left
-  align-items: center
-  li
-    padding: 0 2rem 1rem 0
-    margin-bottom: 1.5rem
-    margin-top: 0
+body, p, a
+  font-family: tbchibirgothicplusk-pro, sans-serif
+  font-style: normal
+  font-weight: 400
 
-// Helper Classes
-.full-width-image-container
-  width: 100vw
-  height: 400px
-  position: relative
-  left: 50%
-  right: 50%
-  margin: 2em -50vw
-  background-size: cover
-  background-position: bottom
-  display: flex
-  justify-content: center
-  align-items: center
+body
+  overflow-x: hidden
 
-.full-width-image
+.layout
+
+  .content
     width: 100vw
-    height: 400px
-    background-size: cover
-    background-position: bottom
+    max-width: 900px
+    margin: auto
+
+.navbar
+  width: calc(100vw - 32px)
+  height: 72px
+  padding: 16px
+
+  .content
+    display: flex
+    width: 100%
+    height: 72px
+    max-width: 900px
+    align-items: center
+    justify-content: space-between
+    box-sizing: border-box
+    margin: auto
+
+  .logo
+    height: 48px
+
+  .menu-items
+    display: flex
+    align-items: center
+
+    .menu-item
+      padding: 16px
+      box-sizing: border-box
+  .burger-menu
+    display: none
+
+.menu-page
+  position: fixed
+  top: 0
+  width: 100%
+  height: 100vh
+  background-color: #8fc31f
+
+  .close-button
+    position: absolute
+    right: 16px
+    top: 16px
+    color: white
+
+  .menu-items
+    display: flex
+    widht: 100%
+    height: 100vh
+    justify-content: center
+    align-items: center
+
+    .menu-item
+      color: white
+      margin: 8px
+
+.index-page
+  width: calc(100%)
+  max-width: 900px
+
+  .section-title
+    display: flex
+    width: 100%
+    justify-content: center
+    align-items: center
+    padding: 24px 0
+  
+  .section-action
+    display: flex
+    width: 100%
+    justify-content: center
+    align-items: center
+    padding: 16px 0
+
+.about-page
+  .section-title
+    display: flex
+    width: 100%
+    justify-content: center
+    align-items: center
+    padding: 24px 0
+
+.blog-list-page
+  .section-title
+    display: flex
+    width: 100%
+    justify-content: center
+    align-items: center
+    padding: 24px 0
+
+.member-page
+  .profile
+    padding: 16px
+    .avatar
+      div
+        width: 300px
+        height: 300px
+        margin: 16px auto
+        img
+          border-radius: 150px
+
+.member-list-page
+  .section-title
+    display: flex
+    width: 100%
+    justify-content: center
+    align-items: center
+    padding: 24px 0
+
+.contact-page
+  .section-title
+    display: flex
+    width: 100%
+    justify-content: center
+    align-items: center
+    padding: 24px 0
+
+  .control
+    width: 100%
+    margin: 16px 0
+
+    .input, .textarea
+      width: 100%
+      box-shadow: inset 0 1px 2px rgba(43,37,35,.1)
+      background-color: #ffffff
+      border-radius: 8px
+      color: #363636
+      align-items: center
+      border: 1px solid #cccccc
+      display: inline-flex
+      font-size: 1rem
+      justify-content: flex-start
+      line-height: 1.5
+      padding: calc(.375em - 1px) calc(.625em - 1px)
+      vertical-align: top
+
+    .input
+      height: 2.25em
+
+    .textarea
+      max-width: 100%
+      min-width: 100%
+
+.blog-roll
+  width: calc(100% - 16px)
+  margin: auto
+  .card
+    display: flex
+
+    .thumbnail
+      width: 300px
+  
+  .pagination
+    width: 100%
     display: flex
     justify-content: center
     align-items: center
 
-.btn
-    display: inline-block
-    padding: 12px 16px 10px
-    font-size: 18px
-    font-size: 1rem
-    line-height: 1.25
-    background-color: #fff
-    border-radius: .25rem
-    text-decoration: none
-    font-weight: 700
-    color: #CC3700
-    text-align: center
-    -webkit-box-shadow: inset 0 0 0 2px #CC3700
-    box-shadow: inset 0 0 0 2px #f40
-    -webkit-transition: all .15s ease
-    transition: all .15s ease
+.member-roll
+  width: calc(100% - 16px)
+  margin: auto
+  
+  .avatar
+    div
+      width: 100px
+      height: 100px
+      margin: 16px auto
+      img
+        border-radius: 50px
 
-.margin-top-0
-  margin-top: 0 !important
-
-.navbar-item .icon
-  color: $primary
-// Override for use of svg's from https://simpleicons.org/
-.icon svg
-  width: 1.5rem
-  height: 1.5rem
-  fill: currentColor
-.navbar-brand .navbar-item.logo
-  padding: 0 1rem
-footer.footer
-  padding: 3rem 0rem 0rem
-  background-color: transparent
-
-//Menu overrides
-$menu-item-color: $white-ter
-$menu-item-hover-color: $black !important
-$menu-item-hover-background-color: $black
-$menu-item-active-color: $kaldi-red-invert
-$menu-item-active-background-color:	$kaldi-red-invert
-$menu-list-border-left: 1px solid $kaldi-red-invert
-$menu-label-color: $white-ter
+  .pagination
+    width: 100%
+    display: flex
+    justify-content: center
+    align-items: center
 
 
-.menu-label
-  font-size: 1em !important
-  text-align: left
-.menu-list
-  list-style: none !important
-  text-align: left
-.social
-  padding: 2em
-.social a
-    padding: .5em .5em .3em .5em
-    border-radius: 1em
-    background-color: $white-ter
-    margin: .5em
-    width: 1em
-    height: 1em
-    vertical-align: middle
-    display: inline
+  .name
+    font-family: tbchibirgothicplusk-pro, sans-serif
+    font-style: normal
+    font-weight: 400
 
-// blog roll
-.blog-list-item.is-featured
-  background-color: #d6400033;
-.blog-list-item header
-  display: flex;
-  margin-bottom: 1em;
-.blog-list-item .featured-thumbnail
-  flex-basis: 35%;
-  margin: 0 1.5em 0 0;
-
-
-@import "~bulma"
-
-
-// responsiveness
-+tablet-only
-  .blog-list-item .featured-thumbnail
-    flex-basis: 50%;
-
-+mobile
-  .blog-list-item header
-    display: block
-  .blog-list-item .featured-thumbnail
-    text-align: center;
-    max-width: 70%;
-    margin: 0 0 1em;
+@media (max-width: 900px)
+  .navbar
+    .content
+      .menu-items
+        display: none
+      .burger-menu
+        display: block
