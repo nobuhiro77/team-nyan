@@ -21,13 +21,13 @@ body
 .layout
 
   .content
-    width: 100vw
+    width: calc(100vw - 16px)
     max-width: 900px
     margin: auto
 
 .navbar
   height: 72px
-  padding: 16px
+  padding: 16px 8px
 
   .content
     display: flex
@@ -79,6 +79,16 @@ body
 .index-page
   width: calc(100%)
   max-width: 900px
+
+  .image
+    position: relative
+    background-size: cover
+    background-position: center
+
+    height: 300px
+    width: 100vw
+    left: 50%
+    transform: translateX(-50%)
 
   .section-title
     display: flex
@@ -155,6 +165,7 @@ body
       line-height: 1.5
       padding: calc(.375em - 1px) calc(.625em - 1px)
       vertical-align: top
+      box-sizing: border-box
 
     .input
       height: 2.25em
@@ -245,6 +256,10 @@ body
         display: none
       .burger-menu
         display: block
+
+  .index-page
+    .image
+      height: 200px
 
   .component-page
     .content

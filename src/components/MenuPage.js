@@ -16,9 +16,9 @@ class MenuPage extends React.Component {
         </IconButton>
         <div className='menu-items'>
           <div>
-            {menuItems.map(items => 
-              <Link to={items.url} className='menu-item' onClick={onClick}>
-                <Typography color='inherit' variant='h5'>{items.label}</Typography>
+            {menuItems.map(item => 
+              <Link to={item.url} className='menu-item' onClick={onClick} key={item.url}>
+                <Typography color='inherit' variant='h5'>{item.label}</Typography>
               </Link>
             )}
           </div>

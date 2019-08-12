@@ -8,9 +8,18 @@ import BlogRoll from '../components/BlogRoll'
 import { Typography, Button } from '@material-ui/core';
 
 export const IndexPageTemplate = ({
+  image,
   posts,
 }) => (
   <div className='index-page'>
+    <div
+      className='image'
+      style={{
+        backgroundImage: `url(${
+          !!image.childImageSharp ? image.childImageSharp.fluid.src : image
+        })`
+      }}
+    />
     <section className='blog-section'>
       <div className='section-title'>
         <Typography variant='h4'>ブログ</Typography>
@@ -36,12 +45,15 @@ IndexPageTemplate.propTypes = {
 }
 
 const IndexPage = ({ data }) => {
-  const { edges } = data.allMarkdownRemark
+  const { frontmatter } = data.markdownRemark
+  const { edges: posts } = data.allMarkdownRemark
+  console.dir(data)
 
   return (
     <Layout>
         <IndexPageTemplate
-          posts={edges}
+          image={frontmatter.image}
+          posts={posts}
         />
     </Layout>
   )
@@ -59,6 +71,18 @@ export default IndexPage
 
 export const pageQuery = graphql`
       query pageQuery {
+        markdownRemark(frontmatter: { templateKey: { eq: "index-page" } }) {
+          frontmatter {
+            title
+            image {
+              childImageSharp {
+                fluid(maxWidth: 2048, quality: 100) {
+                  ...GatsbyImageSharpFluid
+                }
+              }
+            }
+          }
+        }
         allMarkdownRemark(
           sort: { order: DESC, fields: [frontmatter___date] }
           filter: { frontmatter: { templateKey: { eq: "blog-post" } } }
