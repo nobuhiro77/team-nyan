@@ -4,6 +4,7 @@ import { types } from '../constants/ActionTypes'
 
 const mapStateToProps = (state, ownProps) => {
   const { open } = state.menupage
+  console.dir(open)
   return ({
     open
   })

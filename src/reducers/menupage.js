@@ -11,7 +11,9 @@ const menupage = (state = initialState, action) => {
     case types.menupage.OPEN:
       return { ...state, open: true }
     case types.menupage.CLOSE:
-        return { ...state, open: false }
+      return { ...state, open: false }
+    case types.menupage.RESET:
+      return { ...state, open: undefined }
     default:
       return state
   }

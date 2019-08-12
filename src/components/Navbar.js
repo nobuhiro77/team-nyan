@@ -19,6 +19,9 @@ const mapDispatchToProps = dispatch => {
   return {
     handleClick: () => {
       dispatch({ type: types.menupage.OPEN })
+    },
+    handleClickReset: () => {
+      dispatch({ type: types.menupage.RESET })
     }
   }
 }
@@ -26,24 +29,24 @@ const mapDispatchToProps = dispatch => {
 const Navbar = class extends React.Component {
 
   render() {
-    const { handleClick } = this.props
+    const { handleClick, handleClickReset } = this.props
     return (
       <nav className='navbar'>
-        <div className='content'>
-          <Link to='/'>
+        <div className='navbar_content'>
+          <Link to='/' onClick={handleClickReset}>
             <img 
-              className='logo'
+              className='navbar_logo'
               src={logo}
             />
           </Link>
-          <div className='menu-items'>
+          <div className='navbar_menu-items'>
             {menuItems.map(menuItem => 
-              <Link className='menu-item' to={menuItem.url} key={menuItem.url}>
+              <Link className='navbar_menu-item' to={menuItem.url} key={menuItem.url}>
                 <Typography>{menuItem.label}</Typography>
               </Link>
             )}
           </div>
-          <div className='burger-menu'>
+          <div className='navbar_burger-menu'>
             <IconButton onClick={handleClick}>
               <Menu/>
             </IconButton>

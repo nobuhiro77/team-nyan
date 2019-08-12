@@ -18,16 +18,16 @@ class Page extends React.Component {
   render () {
     const { open, handleClickOpen, handleClickClose } = this.props
     return (
-      <div className='component-page'>
+      <div className='page'>
         <div
-          className={`content ${open === undefined ? '' : open === true ? 'content-open' : 'content-close' }`}
+          className={`page_content ${open === undefined ? '' : open === true ? 'page_content-open' : 'page_content-close' }`}
         >
           <Navbar onClick={handleClickOpen}/>
-          <div className='content'>{this.props.children}</div>
+          <div className='page_content'>{this.props.children}</div>
           <Footer />
         </div>
         <div
-          className={`menu-page ${open === undefined ? '' : open === true ? 'menu-page-open' : 'menu-page-close' }`}
+          className={`page_menu-page ${open === undefined ? '' : open === true ? 'page_menu-page-open' : 'page_menu-page-close' }`}
         >
           <MenuPage onClick={handleClickClose}/>
         </div>

@@ -10,14 +10,14 @@ class MenuPage extends React.Component {
     const { onClick } = this.props
 
     return (
-      <div>
-        <IconButton className='close-button' onClick={onClick}>
+      <div className='menu-page'>
+        <IconButton className='menu-page_close-button' onClick={onClick}>
           <Close/>
         </IconButton>
-        <div className='menu-items'>
+        <div className='menu-page_menu-items'>
           <div>
             {menuItems.map(item => 
-              <Link to={item.url} className='menu-item' onClick={onClick} key={item.url}>
+              <Link to={item.url} className='menu-page_menu-item' onClick={onClick} key={item.url}>
                 <Typography color='inherit' variant='h5'>{item.label}</Typography>
               </Link>
             )}
