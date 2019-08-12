@@ -4,11 +4,29 @@ import logo from '../img/logo.svg'
 import { Typography, IconButton } from '@material-ui/core'
 import { Menu } from '@material-ui/icons'
 import { menuItems } from '../constants'
+import { connect } from "react-redux"
+import { types } from '../constants/ActionTypes'
+
+
+const mapStateToProps = (state, ownProps) => {
+  const { open } = state.menupage
+  return ({
+    open
+  })
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    handleClick: () => {
+      dispatch({ type: types.menupage.OPEN })
+    }
+  }
+}
 
 const Navbar = class extends React.Component {
 
   render() {
-    const { onClick } = this.props
+    const { handleClick } = this.props
     return (
       <nav className='navbar'>
         <div className='content'>
@@ -26,7 +44,7 @@ const Navbar = class extends React.Component {
             )}
           </div>
           <div className='burger-menu'>
-            <IconButton onClick={onClick}>
+            <IconButton onClick={handleClick}>
               <Menu/>
             </IconButton>
           </div>
@@ -36,4 +54,7 @@ const Navbar = class extends React.Component {
   }
 }
 
-export default Navbar
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Navbar)

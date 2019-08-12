@@ -26,7 +26,6 @@ body
     margin: auto
 
 .navbar
-  width: calc(100vw - 32px)
   height: 72px
   padding: 16px
 
@@ -203,6 +202,42 @@ body
     font-style: normal
     font-weight: 400
 
+.component-page
+  .content
+    position: relative
+    right: 0
+
+  .menu-page
+    right: -100vw
+
+  .content-open
+    animation: none
+
+  .content-close
+    animation: none
+
+  .menu-page-open
+    animation: none
+
+  .menu-page-close
+    animation: none
+
+@keyframes content-open
+  0%   { right: 0 }
+  100% { right: 50vw }
+
+@keyframes content-close
+  0%   { right: 50vw }
+  100% { right: 0 }
+
+@keyframes menu-page-open
+  0%   { right: -100vw }
+  100% { right: 0 }
+
+@keyframes menu-page-close
+  0%   { right: 0 }
+  100% { right: -100vw }
+
 @media (max-width: 900px)
   .navbar
     .content
@@ -210,3 +245,23 @@ body
         display: none
       .burger-menu
         display: block
+
+  .component-page
+    .content
+      position: relative
+      right: 0
+      
+    .content-open
+      animation: content-open 0.7s ease-in-out forwards
+
+    .content-close
+      animation: content-close 0.7s ease-in-out forwards
+
+    .menu-page
+      right: -100vw
+
+    .menu-page-open
+      animation: menu-page-open 0.7s ease-in-out forwards
+
+    .menu-page-close
+      animation: menu-page-close 0.7s ease-in-out forwards

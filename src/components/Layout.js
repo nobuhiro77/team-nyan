@@ -1,14 +1,11 @@
 import React from 'react'
 import { Helmet } from 'react-helmet'
-import Footer from '../components/Footer'
-import Navbar from '../components/Navbar'
 import './all.sass'
 import useSiteMetadata from './SiteMetadata'
 import { withPrefix } from "gatsby"
 import { ThemeProvider } from '@material-ui/styles'
 import theme from '../../src/theme'
-import { Keyframes, animated } from 'react-spring/renderprops'
-import MenuPage from './MenuPage';
+import Page from '../containers/Page'
 
 const TemplateWrapper = ({ children }) => {
   const { title, description } = useSiteMetadata()
@@ -55,60 +52,13 @@ const TemplateWrapper = ({ children }) => {
         `}
         </script>
       </Helmet>
-      <PageContent>
-        {children}
-      </PageContent>
+      <ThemeProvider theme={theme}>
+        <Page>
+          {children}
+        </Page>
+      </ThemeProvider>
     </div>
   )
-}
-
-const MenuBarAnimation = Keyframes.Spring({
-  open: { delay: 0, x: 100 },
-  close: { delay: 0, x: 0 },
-})
-
-class PageContent extends React.Component {
-  state = {
-    menubar: false
-  }
-
-  handleClickNavbar = () => {
-    this.setState({ menubar: !this.state.menubar })
-  }
-
-  render () {
-    const { menubar } = this.state
-    const state = menubar === true ? 'open' : 'close'
-    console.dir(state)
-    return (
-      <ThemeProvider theme={theme}>
-        <MenuBarAnimation native state={state}>
-          {({ x }) => (
-            <React.Fragment>
-              <animated.div
-                style={{
-                  position: 'relative',
-                  right: x.interpolate(x => `calc(${x / 2}vw)`),
-                }}
-              >
-                <Navbar onClick={this.handleClickNavbar}/>
-                <div className='content'>{this.props.children}</div>
-                <Footer />
-              </animated.div>
-              <animated.div
-                className='menu-page'
-                style={{
-                  right: x.interpolate(x => `calc(-100vw + ${x}vw)`),
-                }}
-              >
-                <MenuPage onClick={this.handleClickNavbar}/>
-              </animated.div>
-            </React.Fragment>
-          )}
-        </MenuBarAnimation>
-      </ThemeProvider>
-    )
-  }
 }
 
 export default TemplateWrapper
