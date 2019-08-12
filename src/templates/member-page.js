@@ -11,8 +11,6 @@ import { Typography } from '@material-ui/core';
 export const MemberPageTemplate = ({
   content,
   contentComponent,
-  description,
-  tags,
   title,
   name,
   image,
@@ -35,18 +33,6 @@ export const MemberPageTemplate = ({
         <Typography variant='h4' align='center'>{name}</Typography>
       </div>
       <PostContent content={content} />
-      {tags && tags.length ? (
-        <div style={{ marginTop: `4rem` }}>
-          <h4>Tags</h4>
-          <ul className="taglist">
-            {tags.map(tag => (
-              <li key={tag + `tag`}>
-                <Link to={`/tags/${kebabCase(tag)}/`}>{tag}</Link>
-              </li>
-            ))}
-          </ul>
-        </div>
-      ) : null}
     </div>
   )
 }
@@ -54,7 +40,6 @@ export const MemberPageTemplate = ({
 MemberPageTemplate.propTypes = {
   content: PropTypes.node.isRequired,
   contentComponent: PropTypes.func,
-  description: PropTypes.string,
   title: PropTypes.string,
   helmet: PropTypes.object,
 }
@@ -67,17 +52,11 @@ const MemberPage = ({ data }) => {
       <MemberPageTemplate
         content={post.html}
         contentComponent={HTMLContent}
-        description={post.frontmatter.description}
         helmet={
           <Helmet titleTemplate="%s">
             <title>{`${post.frontmatter.title}`}</title>
-            <meta
-              name="description"
-              content={`${post.frontmatter.description}`}
-            />
           </Helmet>
         }
-        tags={post.frontmatter.tags}
         title={post.frontmatter.title}
         name={post.frontmatter.name}
         image={post.frontmatter.featuredimage}
@@ -103,8 +82,6 @@ export const pageQuery = graphql`
         date(formatString: "MMMM DD, YYYY")
         title
         name
-        description
-        tags
         featuredpost
         featuredimage {
           childImageSharp {
