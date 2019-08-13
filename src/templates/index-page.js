@@ -13,13 +13,19 @@ export const IndexPageTemplate = ({
 }) => (
   <div className='index-page'>
     <div
-      className='image'
+      className='index-page_header-image'
       style={{
         backgroundImage: `url(${
           !!image.childImageSharp ? image.childImageSharp.fluid.src : image
         })`
       }}
-    />
+    >
+      <div className='index-page_header-box'>
+        <div className='index-page_header-title'>
+          <Typography variant='h5' color='inherit'>にゃんこならべをひろめる会<br/> チームにゃん！</Typography>
+        </div>
+      </div> 
+    </div>
     <section className='blog-section'>
       <div className='section-title'>
         <Typography variant='h4'>ブログ</Typography>

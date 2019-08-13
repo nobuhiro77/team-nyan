@@ -42,7 +42,8 @@ const Navbar = class extends React.Component {
           <div className='navbar_menu-items'>
             {menuItems.map(menuItem => 
               <Link className='navbar_menu-item' to={menuItem.url} key={menuItem.url}>
-                <Typography>{menuItem.label}</Typography>
+                <Typography align='center' className='navbar_label'>{menuItem.label}</Typography>
+                <Typography align='center' className='navbar_en-label'>{menuItem.en_label}</Typography>
               </Link>
             )}
           </div>
