@@ -2,6 +2,12 @@
 templateKey: index-page
 title: Great coffee with a conscience
 image: /img/index-header-nyankonarabe.jpg
+aboutus:
+  blurbs:
+    - image: /img/index-page_about-us_image.jpg.png
+  description: |-
+    にゃんともかわいいボードゲーム「にゃんこならべ」は、にゃんこを５つならべたら勝ちというシンプルなルールで親しみやすいゲームです。
+    わたしたちは、にゃんこならべが世界中の多くの人にあそばれるゲームになるよう日々活動しています。
 heading: Great coffee with a conscience
 subheading: Support sustainable farming while enjoying a cup
 mainpitch:
