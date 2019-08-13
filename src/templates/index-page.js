@@ -3,13 +3,14 @@ import PropTypes from 'prop-types'
 import { Link, graphql } from 'gatsby'
 
 import Layout from '../components/Layout'
-import Features from '../components/Features'
 import BlogRoll from '../components/BlogRoll'
-import { Typography, Button } from '@material-ui/core';
+import { Typography, Button, Grid } from '@material-ui/core';
+import { menuItems, MENU_ITEM_INDEX } from '../constants';
 
 export const IndexPageTemplate = ({
   image,
   posts,
+  aboutus,
 }) => (
   <div className='index-page'>
     <div
@@ -26,6 +27,27 @@ export const IndexPageTemplate = ({
         </div>
       </div> 
     </div>
+    <section className='index-page_about-us-section'>
+      <Grid className='index-page_grid' container>
+        <Grid className='index-page_left-grid' item sm={6} xs={12}>
+          <img
+            className='index-page_photo'
+            alt='index-page_photo'
+            src={aboutus.blurbs.length > 0 && !!aboutus.blurbs[0].image.childImageSharp ? aboutus.blurbs[0].image.childImageSharp.fluid.src : aboutus.blurbs[0].image}
+          />
+        </Grid>
+        <Grid className='index-page_right-grid' item sm={6} xs={12}>
+          <div className='index-page_description-box'>
+            <Typography className='index-page_en-label' variant='h5' color='primary'>{menuItems[MENU_ITEM_INDEX.ABOUT_US].en_label}</Typography>
+            <Typography className='index-page_label' variant='subtitle1' color='primary'>{menuItems[MENU_ITEM_INDEX.ABOUT_US].label}</Typography>
+            <Typography>{aboutus.description}</Typography>
+            <Link className='index-page_more-button' to={menuItems[MENU_ITEM_INDEX.ABOUT_US].url}>
+              <Typography color='inherit'>もっとみる</Typography>
+            </Link>
+          </div>
+        </Grid>
+      </Grid>
+    </section>
     <section className='blog-section'>
       <div className='section-title'>
         <Typography variant='h4'>ブログ</Typography>
@@ -59,6 +81,7 @@ const IndexPage = ({ data }) => {
     <Layout>
         <IndexPageTemplate
           image={frontmatter.image}
+          aboutus={frontmatter.aboutus}
           posts={posts}
         />
     </Layout>
@@ -84,6 +107,18 @@ export const pageQuery = graphql`
               childImageSharp {
                 fluid(maxWidth: 2048, quality: 100) {
                   ...GatsbyImageSharpFluid
+                }
+              }
+            }
+            aboutus {
+              description
+              blurbs {
+                image {
+                  childImageSharp {
+                    fluid(maxWidth: 240, quality: 64) {
+                      ...GatsbyImageSharpFluid
+                    }
+                  }
                 }
               }
             }

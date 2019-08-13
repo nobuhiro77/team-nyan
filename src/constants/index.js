@@ -26,3 +26,11 @@ export const menuItems = [
     url: 'contact',
   },
 ]
+
+export const MENU_ITEM_INDEX = {
+   ABOUT_US: 0,
+   EVENT: 1,
+   BLOG: 2,
+   MEMBER: 3,
+   CONTACT: 4, 
+}

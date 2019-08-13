@@ -34,8 +34,9 @@ const Navbar = class extends React.Component {
       <nav className='navbar'>
         <div className='navbar_content'>
           <Link to='/' onClick={handleClickReset}>
-            <img 
+            <img
               className='navbar_logo'
+              alt='navbar_logo'
               src={logo}
             />
           </Link>

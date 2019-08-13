@@ -1,4 +1,5 @@
 $green: #8fc31f
+$light-green: #f4f9e8
 
 html body
   padding: 0
@@ -116,6 +117,64 @@ body
 
       h5
         line-height: 2
+
+  .index-page_about-us-section
+    position: relative
+    background-color: #f7f8f8
+    width: 100vw
+    left: 50%
+    transform: translateX(-50%)
+    border-bottom: 3px solid $light-green
+
+    .index-page_grid
+      width: 100%
+      max-width: 900px
+      margin: auto
+
+      .index-page_left-grid
+        display: flex
+        justify-content: center
+        align-items: center
+        padding: 80px 0
+        box-sizing: border-box
+
+        .index-page_photo
+          max-width: 300px
+          width: 100%
+          border-radius: 8px
+          border: 3px solid #8fc31faa
+
+      .index-page_right-grid
+        display: flex
+        justify-content: center
+        align-items: center
+        padding: 80px 16px
+        box-sizing: border-box
+
+        .index-page_description-box
+          margin: auto 0
+
+          .index-page_en-label
+            text-transform: uppercase
+            margin-bottom: 8px
+
+          .index-page_label
+            margin-bottom: 8px
+          
+          .index-page_more-button
+            margin: 32px 0 0 0
+            height: 40px
+            width: 160px
+            display: flex
+            justify-content: center
+            align-items: center
+            border-radius: 20px
+            background-color: $green
+            color: white
+            transition: 0.3s linear
+
+            &:hover
+              opacity: 0.8
 
   .section-title
     display: flex
@@ -319,3 +378,21 @@ body
 
     .page_menu-page-close
       animation: menu-page-close 0.7s ease-in-out forwards
+
+@media (max-width: 600px)
+
+  .index-page
+    .index-page_header-image
+      .index-page_header-box
+        .index-page_header-title
+          h5
+            font-size: 1em
+    .index-page_about-us-section
+      .index-page_grid
+        .index-page_left-grid
+          padding: 48px 0 24px 0
+        .index-page_right-grid
+          padding: 24px 16px 48px 16px
+          .index-page_description-box
+            .index-page_more-button
+              margin: 32px auto 0 auto
