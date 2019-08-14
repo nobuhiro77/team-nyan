@@ -6,6 +6,7 @@ import Layout from '../components/Layout'
 import BlogRoll from '../components/BlogRoll'
 import { Typography, Button, Grid } from '@material-ui/core';
 import { menuItems, MENU_ITEM_INDEX } from '../constants';
+import nyanko from '../img/nyanko-line.svg'
 
 export const IndexPageTemplate = ({
   image,
@@ -23,7 +24,7 @@ export const IndexPageTemplate = ({
     >
       <div className='index-page_header-box'>
         <div className='index-page_header-title'>
-          <Typography variant='h5' color='inherit'>にゃんこならべをひろめる会<br/> チームにゃん！</Typography>
+          <Typography variant='h5' color='inherit'>にゃんこならべをひろめる会<br/>チームにゃん！</Typography>
         </div>
       </div> 
     </div>
@@ -45,6 +46,28 @@ export const IndexPageTemplate = ({
               <Typography color='inherit'>もっとみる</Typography>
             </Link>
           </div>
+        </Grid>
+      </Grid>
+    </section>
+    <section className='index-page_activity-section'>
+      <Grid className='index-page_grid' container>
+        <Grid className='index-page_title-grid' item xs={12}>
+          <Typography className='index-page_en-label' variant='h5' color='primary' align='center'>ACTIVITY</Typography>
+          <Typography className='index-page_label' variant='subtitle1' color='primary' align='center'>活動内容</Typography>
+        </Grid>
+        <Grid className='index-page_activity-grid' item sm={4} xs={12}>
+          <img
+            className='index-page_nyanko-line'
+            alt='nyanko'
+            src={nyanko}
+          />
+          <Typography variant='h6' color='inherit' align='center'>園・学校</Typography>
+        </Grid>
+        <Grid className='index-page_activity-grid' item sm={4} xs={12}>
+          <Typography variant='h6' color='inherit' align='center'>大会</Typography>
+        </Grid>
+        <Grid className='index-page_activity-grid' item sm={4} xs={12}>
+          <Typography variant='h6' color='inherit' align='center'>イベント出展</Typography>
         </Grid>
       </Grid>
     </section>
@@ -115,7 +138,7 @@ export const pageQuery = graphql`
               blurbs {
                 image {
                   childImageSharp {
-                    fluid(maxWidth: 240, quality: 64) {
+                    fluid(maxWidth: 400, quality: 100) {
                       ...GatsbyImageSharpFluid
                     }
                   }
