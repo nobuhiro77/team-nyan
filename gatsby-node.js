@@ -89,6 +89,9 @@ exports.createPages = ({ actions, graphql }) => {
 
     // Make tag pages
     tags.forEach(tag => {
+      if (Boolean(tag) === false) {
+        return
+      }
       const tagPath = `/tags/${_.kebabCase(tag)}/`
 
       createPage({
