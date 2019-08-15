@@ -246,6 +246,49 @@ body, p, a
           &:hover
             opacity: 0.8
 
+  .index-page_blog-section
+    position: relative
+    width: 100vw
+    left: 50%
+    transform: translateX(-50%)
+    border-bottom: 3px solid $light-green
+
+    .index-page_grid
+      width: 100%
+      max-width: 900px
+      margin: auto
+
+      .index-page_title-grid
+        padding: 24px 0
+
+        .index-page_en-label
+          text-transform: uppercase
+          margin-bottom: 8px
+
+        .index-page_label
+          margin-bottom: 8px
+
+      .index-page_action-grid
+        padding: 32px 0 40px 0
+        display: flex
+        justify-content: center
+        align-items: center
+
+        .index-page_more-button
+          margin: 32px 0 0 0
+          height: 40px
+          width: 160px
+          display: flex
+          justify-content: center
+          align-items: center
+          border-radius: 20px
+          background-color: $green
+          color: white
+          transition: 0.3s linear
+
+          &:hover
+            opacity: 0.8
+
   .section-title
     display: flex
     width: 100%
@@ -345,6 +388,28 @@ body, p, a
     justify-content: center
     align-items: center
 
+.blog-card-roll
+  overflow-x: auto
+  margin: 0 8px
+  text-align: center
+
+  .blog-card-roll_scroll-list
+    white-space: nowrap
+    display: flex
+    overflow-y: hidden
+    overflow-x: auto
+    justify-content: center
+    align-items: center
+    -webkit-overflow-scrolling: touch
+    display: inline-block
+
+  .blog-card-roll_card
+    display: inline-block
+    width: 270px
+    margin: 8px
+    white-space: normal
+    text-align: left
+
 .member-roll
   width: calc(100% - 16px)
   margin: auto
@@ -371,7 +436,7 @@ body, p, a
 
 .page
   overflow-x: hidden
-  
+
   .page_content
     position: relative
     right: 0

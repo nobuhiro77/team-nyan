@@ -7,6 +7,7 @@ import BlogRoll from '../components/BlogRoll'
 import { Typography, Button, Grid } from '@material-ui/core';
 import { menuItems, MENU_ITEM_INDEX } from '../constants';
 import nyanko from '../img/nyanko-line.svg'
+import BlogCardRoll from '../components/BlogCardRoll';
 
 export const IndexPageTemplate = ({
   image,
@@ -84,14 +85,21 @@ export const IndexPageTemplate = ({
         </Grid>
       </Grid>
     </section>
-    <section className='blog-section'>
-      <div className='section-title'>
-        <Typography variant='h4'>ブログ</Typography>
-      </div>
-      <BlogRoll posts={posts}/>
-      <div className='section-action'>
-        <Button component={Link} to='/blog'>もっとみる</Button>
-      </div>
+    <section className='index-page_blog-section'>
+      <Grid className='index-page_grid' container>
+        <Grid className='index-page_title-grid' item xs={12}>
+          <Typography className='index-page_en-label' variant='h5' color='primary' align='center'>{menuItems[MENU_ITEM_INDEX.BLOG].en_label}</Typography>
+          <Typography className='index-page_label' variant='subtitle1' color='primary' align='center'>{menuItems[MENU_ITEM_INDEX.BLOG].label}</Typography>
+        </Grid>
+        <Grid className='index-page_blog-grid' item xs={12}>
+          <BlogCardRoll posts={posts}/>
+        </Grid>
+        <Grid className='index-page_action-grid' item xs={12}>
+          <Link className='index-page_more-button' to={menuItems[MENU_ITEM_INDEX.BLOG].url}>
+            <Typography color='inherit'>もっとみる</Typography>
+          </Link>
+        </Grid>
+      </Grid>
     </section>
   </div>
 )
@@ -179,7 +187,7 @@ export const pageQuery = graphql`
         ) {
           edges {
             node {
-              excerpt(pruneLength: 200)
+              excerpt(pruneLength: 50)
               id
               fields {
                 slug
@@ -191,7 +199,7 @@ export const pageQuery = graphql`
                 featuredpost
                 featuredimage {
                   childImageSharp {
-                    fluid(maxWidth: 120, quality: 100) {
+                    fluid(maxWidth: 400, quality: 100) {
                       ...GatsbyImageSharpFluid
                     }
                   }

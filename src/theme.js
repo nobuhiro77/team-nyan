@@ -24,6 +24,13 @@ const theme = createMuiTheme({
       '"Segoe UI Symbol"',
     ].join(','),
   },
+  overrides: {
+    MuiCardHeader: {
+      title: {
+        fontSize: '1em'
+      }
+    },
+  },
 });
 
 export default theme;
