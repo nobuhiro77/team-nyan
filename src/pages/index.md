@@ -16,6 +16,9 @@ activity:
     - title: イベント出展
       image: /img/activity_event.jpg
       description: 地域のお祭り、ボードゲームイベントなどに出展しています。
+    - title: 大会
+      image: /img/activity_competition.jpg
+      description: よりにゃんこならべを楽しんでもらえるように大会を開催しています。
 description: >-
   Kaldi is the ultimate spot for coffee lovers who want to learn about their
   java’s origin and support the farmers that grew it. We take coffee production,
