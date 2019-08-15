@@ -12,6 +12,7 @@ export const IndexPageTemplate = ({
   image,
   posts,
   aboutus,
+  activity
 }) => (
   <div className='index-page'>
     <div
@@ -55,19 +56,31 @@ export const IndexPageTemplate = ({
           <Typography className='index-page_en-label' variant='h5' color='primary' align='center'>ACTIVITY</Typography>
           <Typography className='index-page_label' variant='subtitle1' color='primary' align='center'>活動内容</Typography>
         </Grid>
-        <Grid className='index-page_activity-grid' item sm={4} xs={12}>
-          <img
-            className='index-page_nyanko-line'
-            alt='nyanko'
-            src={nyanko}
-          />
-          <Typography variant='h6' color='inherit' align='center'>園・学校</Typography>
-        </Grid>
-        <Grid className='index-page_activity-grid' item sm={4} xs={12}>
-          <Typography variant='h6' color='inherit' align='center'>大会</Typography>
-        </Grid>
-        <Grid className='index-page_activity-grid' item sm={4} xs={12}>
-          <Typography variant='h6' color='inherit' align='center'>イベント出展</Typography>
+        {activity.activities.map(activity => 
+          <Grid
+            className='index-page_activity-grid'
+            item
+            sm={4}
+            xs={12}
+            style={{
+              backgroundImage: `url(${!!activity.image.childImageSharp ? activity.image.childImageSharp.fluid.src : activity.image})`
+            }}
+          >
+            <div className='index-page_image-mask'>
+              <img
+                className='index-page_nyanko-line'
+                alt='nyanko'
+                src={nyanko}
+              />
+              <Typography className='index-page_title' variant='h6' color='inherit' align='center'>{activity.title}</Typography>
+              <Typography className='index-page_description' color='inherit'>{activity.description}</Typography>
+            </div>
+          </Grid>
+        )}
+        <Grid className='index-page_action-grid' item xs={12}>
+          <Link className='index-page_contact-button' to={menuItems[MENU_ITEM_INDEX.CONTACT].url}>
+            <Typography color='inherit'>{menuItems[MENU_ITEM_INDEX.CONTACT].label}</Typography>
+          </Link>
         </Grid>
       </Grid>
     </section>
@@ -98,13 +111,12 @@ IndexPageTemplate.propTypes = {
 const IndexPage = ({ data }) => {
   const { frontmatter } = data.markdownRemark
   const { edges: posts } = data.allMarkdownRemark
-  console.dir(data)
-
   return (
     <Layout>
         <IndexPageTemplate
           image={frontmatter.image}
           aboutus={frontmatter.aboutus}
+          activity={frontmatter.activity}
           posts={posts}
         />
     </Layout>
@@ -143,6 +155,19 @@ export const pageQuery = graphql`
                     }
                   }
                 }
+              }
+            }
+            activity {
+              activities {
+                title
+                image {
+                  childImageSharp {
+                    fluid(maxWidth: 400, quality: 100) {
+                      ...GatsbyImageSharpFluid
+                    }
+                  }
+                }
+                description
               }
             }
           }

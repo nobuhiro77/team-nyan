@@ -6,5 +6,8 @@ export const types = {
   },
   window: {
     RESIZE: 'window/RESIZE',
+  },
+  webfonts: {
+    ACTIVE: 'webfonts/ACTIVE',
   }
 }

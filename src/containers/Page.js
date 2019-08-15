@@ -4,9 +4,10 @@ import { types } from '../constants/ActionTypes'
 
 const mapStateToProps = (state, ownProps) => {
   const { open } = state.menupage
-  console.dir(open)
+  const { webfonts } = state
   return ({
-    open
+    open,
+    webfonts
   })
 }
 
@@ -14,6 +15,9 @@ const mapDispatchToProps = dispatch => {
   return ({
     handleResize: () => {
       dispatch({ type: types.window.RESIZE })
+    },
+    handleWebFontsActive: () => {
+      dispatch({ type: types.webfonts.ACTIVE })
     },
     handleClickOpen: () => {
       dispatch({ type: types.menupage.OPEN })

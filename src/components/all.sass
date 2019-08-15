@@ -16,12 +16,6 @@ body, p, a
   font-style: normal
   font-weight: 400
 
-body
-  overflow-x: hidden
-
-.layout
-
-
 .navbar
   height: 72px
   padding: 0 16px
@@ -177,23 +171,80 @@ body
               opacity: 0.8
 
   .index-page_activity-section
+    position: relative
+    width: 100vw
+    left: 50%
+    transform: translateX(-50%)
+    border-bottom: 3px solid $light-green
+
     .index-page_grid
+      width: 100%
+      max-width: 900px
+      margin: auto
+
       .index-page_title-grid
         padding: 24px 0
+
         .index-page_en-label
           text-transform: uppercase
           margin-bottom: 8px
+
         .index-page_label
           margin-bottom: 8px
+
       .index-page_activity-grid
+        position: relative
         height: 400px
-        background-color: $green
         color: white
         border: 1px solid white
         text-align: center
-        .index-page_nyanko-line
-          max-width: 100px
-          margin: 40px
+        background-size: cover
+        background-position: center
+
+        .index-page_image-mask
+          background-color: rgba(0,0,0,0.4)
+          position: absolute
+          height: 100%
+          width: 100%
+          top: 0
+          right: 0
+          bottom: 0
+          left: 0
+          content: ''
+          transition: 0.3s linear
+
+          &:hover
+            background-color: $green
+
+          .index-page_nyanko-line
+            max-width: 100px
+            margin: 40px
+
+          .index-page_title
+            margin: 16px
+
+          .index-page_description
+            margin: 16px
+
+      .index-page_action-grid
+        padding: 32px 0 40px 0
+        display: flex
+        justify-content: center
+        align-items: center
+
+        .index-page_contact-button
+          height: 40px
+          width: 160px
+          display: flex
+          justify-content: center
+          align-items: center
+          border-radius: 20px
+          background-color: $green
+          color: white
+          transition: 0.3s linear
+
+          &:hover
+            opacity: 0.8
 
   .section-title
     display: flex
@@ -319,6 +370,8 @@ body
     font-weight: 400
 
 .page
+  overflow-x: hidden
+  
   .page_content
     position: relative
     right: 0
@@ -350,6 +403,13 @@ body
     background-color: $green
     z-index: 20
 
+.loading-page
+  position: fixed
+  top: 0
+  left: 0
+  width: 100vw
+  height: 100vh
+
 @keyframes content-open
   0%   { right: 0 }
   100% { right: 50vw }
@@ -365,6 +425,10 @@ body
 @keyframes menu-page-close
   0%   { right: 0 }
   100% { right: -100vw }
+
+@keyframes load
+  0%   { opacity: 0 }
+  100% { opacity: 1 }
 
 @media (max-width: 900px)
   .navbar
