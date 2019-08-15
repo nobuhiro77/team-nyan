@@ -13,6 +13,9 @@ activity:
     - title: 園・学校
       image: /img/activity_school.jpg
       description: 学童や小学校などの児童向けに体験会を実施しています。
+    - title: イベント出展
+      image: /img/activity_event.jpg
+      description: 地域のお祭り、ボードゲームイベントなどに出展しています。
 description: >-
   Kaldi is the ultimate spot for coffee lovers who want to learn about their
   java’s origin and support the farmers that grew it. We take coffee production,
